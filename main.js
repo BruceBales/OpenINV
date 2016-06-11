@@ -35,19 +35,18 @@ http.createServer(function(request, response) {
   /*Assembly Action- checks blueprint requirements, adds resulting items while removing components*/
   function actionAssemble() {
     var blueprint = querystring.blueprint;
-    db.query('SELECT * FROM blueprints where product_name = ?', blueprint, function(err, results, rows) {
+    var sql = 'SELECT * FROM blueprints where product_name = ?';
+    db.query(sql, blueprint, function(err, results, rows) {
        var ret = JSON.stringify(results);
        var stuff = JSON.parse(ret);
        var components_string = stuff[0].components_json;
        var components = JSON.parse(components_string);
       console.log(components);
     });
-    db.query('SELECT * FROM items wheretype = component and item = ?', blueprint, function(err, results, rows) {
+    db.query('SELECT * FROM items where type = "component" and item = ?', blueprint, function(err, results, rows) {
        var ret = JSON.stringify(results);
        var stuff = JSON.parse(ret);
-       var components_string = stuff[0].components_json;
-       var components = JSON.parse(components_string);
-      console.log(components);
+      console.log(ret);
     });
 
   }
