@@ -33,7 +33,7 @@ http.createServer(function(request, response) {
     }
   }
   /*Assembly Action- checks blueprint requirements, adds resulting items while removing components*/
-  function actionAssemble() {
+  /*function actionAssemble() {
     var blueprint = querystring.blueprint;
     var sql = 'SELECT * FROM blueprints where product_name = ?';
     db.query(sql, blueprint, function(err, results, rows) {
@@ -43,13 +43,14 @@ http.createServer(function(request, response) {
        var components = JSON.parse(components_string);
       console.log(components);
     });
-    db.query('SELECT * FROM items where type = "component" and item = ?', blueprint, function(err, results, rows) {
+    console.log(components);
+
+    db.query('SELECT count() FROM items where type = "component"', function(err, results, rows) {
        var ret = JSON.stringify(results);
-       var stuff = JSON.parse(ret);
-      console.log(ret);
+       console.log(results);
     });
 
-  }
+  }*/
 
 
 
@@ -59,7 +60,7 @@ http.createServer(function(request, response) {
       actionAdd();
       break;
     case 'assemble':
-      actionAssemble();
+      response.end("Assemble Action is WIP");
       break;
     default:
       response.end("Please provide an action");
