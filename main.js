@@ -32,6 +32,20 @@ http.createServer(function(request, response) {
       })
     }
   }
+
+  function actionRemove() {
+    var quantity = querystring.quantity;
+    for (x=0; x<quantity; x++) {
+      console.log("Removing...");
+      db.query('DELETE FROM openinv.items WHERE item = "'+querystring.item+'" order by id desc limit 1;', "", function(err, res) {
+        if (err) {
+          console.log("Error: DB stuff ain't working");
+          throw err;
+        }
+      })
+    }
+  }
+
   /*Assembly Action- checks blueprint requirements, adds resulting items while removing components*/
   /*function actionAssemble() {
     var blueprint = querystring.blueprint;
@@ -61,6 +75,9 @@ http.createServer(function(request, response) {
       break;
     case 'assemble':
       response.end("Assemble Action is WIP");
+      break;
+    case 'remove':
+      actionRemove();
       break;
     default:
       response.end("Please provide an action");
