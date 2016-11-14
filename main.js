@@ -20,6 +20,9 @@ http.createServer(function(request, response) {
         console.log("Failed Authentication Attempt");
         break;
       }
+      if (is_authenticated == true) {
+        console.log(Successfully Authenticated);
+      }
       actions.Add(request);
       break;
     case 'assemble':
@@ -28,6 +31,9 @@ http.createServer(function(request, response) {
         console.log("Failed Authentication Attempt");
         break;
       }
+      if (is_authenticated == true) {
+        console.log(Successfully Authenticated);
+      }
       response.end("Assemble Action is WIP");
       break;
     case 'remove':
@@ -35,6 +41,9 @@ http.createServer(function(request, response) {
         response.end("Authentication Failed");
         console.log("Failed Authentication Attempt");
         break;
+      }
+      if (is_authenticated == true) {
+        console.log(Successfully Authenticated);
       }
       actions.Remove(request);
       break;
