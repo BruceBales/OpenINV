@@ -21,7 +21,7 @@ http.createServer(function(request, response) {
         break;
       }
       if (is_authenticated == true) {
-        console.log(Successfully Authenticated);
+        console.log("Successfully Authenticated");
       }
       actions.Add(request);
       break;
@@ -32,7 +32,7 @@ http.createServer(function(request, response) {
         break;
       }
       if (is_authenticated == true) {
-        console.log(Successfully Authenticated);
+        console.log("Successfully Authenticated");
       }
       response.end("Assemble Action is WIP");
       break;
@@ -43,7 +43,7 @@ http.createServer(function(request, response) {
         break;
       }
       if (is_authenticated == true) {
-        console.log(Successfully Authenticated);
+        console.log("Successfully Authenticated");
       }
       actions.Remove(request);
       break;
