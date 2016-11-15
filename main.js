@@ -9,9 +9,11 @@ http.createServer(function(request, response) {
   var querystring = url.parse(request.url, true).query;
   console.log(querystring);
   var action = querystring.action;
-  var security_token = querystring.security_token;
-  var is_authenticated = auth.Authenticate(querystring.item, security_token);
 
+/*Security Token Variables*/
+  var security_token = querystring.security_token,
+      private_token = argv.private_token,
+      is_authenticated = auth.Authenticate(querystring.item, security_token, private_token);
 
   switch(action) {
     case 'add':
