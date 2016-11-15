@@ -12,7 +12,7 @@ http.createServer(function(request, response) {
 
 /*Security Token Variables*/
   var security_token = querystring.security_token,
-      private_token = argv.private_token,
+      private_token = argv.t,
       is_authenticated = auth.Authenticate(querystring.item, security_token, private_token);
 
   switch(action) {
