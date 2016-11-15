@@ -1,5 +1,5 @@
 /*---Initial Requires---*/
-var argv    =     require('yargs');
+var argv    =     require('yargs').argv;
 var http    =     require('http');
 var url     =     require('url');
 var actions =     require('./lib/actions.js');
@@ -11,9 +11,8 @@ http.createServer(function(request, response) {
   var action = querystring.action;
 
 /*Security Token Variables*/
-  var security_token = querystring.security_token,
-      private_token = argv.t,
-      is_authenticated = auth.Authenticate(querystring.item, security_token, private_token);
+  var security_token = querystring.security_token;
+  var is_authenticated = auth.Authenticate(querystring.item, security_token, argv.t);
 
   switch(action) {
     case 'add':
