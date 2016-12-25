@@ -14,7 +14,7 @@ http.createServer(function(request, response) {
   var security_token = querystring.security_token;
   var is_authenticated = auth.Authenticate(querystring.item, security_token, argv.t);
 
-  if (argv.no == "yes") {
+  if (argv.noauth == "yes") {
     is_authenticated = true;
     console.log("Authentication disabled");
   }
