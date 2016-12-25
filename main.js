@@ -14,6 +14,11 @@ http.createServer(function(request, response) {
   var security_token = querystring.security_token;
   var is_authenticated = auth.Authenticate(querystring.item, security_token, argv.t);
 
+  if (argv.no == "yes") {
+    is_authenticated = true;
+    console.log("Authentication disabled");
+  }
+
   switch(action) {
     case 'add':
       if (is_authenticated == false) {
